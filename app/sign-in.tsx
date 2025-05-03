@@ -21,11 +21,11 @@ export default function SignIn() {
 
   const handleLogin = async () => {
     try {
-      const LOCALHOST =
-        Platform.OS === "ios"
-          ? "http://127.0.0.1:8000"
-          : "http://192.168.29.74:8000";
-      const API_BASE_URL = LOCALHOST + "/api/v1";
+      if (!email || !password) {
+        alert("Please enter your email and password.");
+        return;
+      }
+      const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL;
       const response = await axios.post(`${API_BASE_URL}/login`, {
         email: email,
         password: password,

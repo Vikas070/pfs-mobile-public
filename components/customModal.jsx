@@ -9,34 +9,38 @@ import {
 } from "react-native";
 import { Portal, Button } from "react-native-paper";
 
-const CustomModal = ({ visible, onClose, title, children }) => {
+const CustomModal = ({
+  visible,
+  onClose,
+  title,
+  children,
+  customHeader = null,
+  handleSubmit,
+}) => {
   return (
     <Portal>
       <Modal visible={visible} transparent animationType="slide">
         <View style={styles.overlay}>
           <View style={styles.modalContainer}>
             {/* Header */}
-            <View style={styles.header}>
-              <Text style={styles.title}>{title}</Text>
-              <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-                <Text style={styles.closeText}>✕</Text>
-              </TouchableOpacity>
-            </View>
+            {customHeader ? (
+              customHeader
+            ) : (
+              <View style={styles.header}>
+                <Text style={styles.title}>{title}</Text>
+
+                <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+                  <Text style={styles.closeText}>✕</Text>
+                </TouchableOpacity>
+              </View>
+            )}
             {/* Sub Header */}
             <View style={styles.subheader}>
               <Text style={styles.subtitle}>{title}</Text>
-              {/* <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-                <Text style={styles.closeText}>✕</Text>
-              </TouchableOpacity> */}
             </View>
 
             {/* Scrollable Content Area */}
-            <ScrollView
-              showsVerticalScrollIndicator={true} // ✅ Enables Scroll Bar
-              nestedScrollEnabled={true} // ✅ Important for Modals
-            >
-              {children}
-            </ScrollView>
+            <View style={{ flex: 1 }}>{children}</View>
 
             {/* Footer Buttons */}
             <View style={styles.footer}>
@@ -50,7 +54,7 @@ const CustomModal = ({ visible, onClose, title, children }) => {
               </Button>
               <Button
                 mode="contained"
-                onPress={() => console.log("Submit")}
+                onPress={handleSubmit}
                 buttonColor="#ffc266"
                 textColor="#000"
               >

@@ -3,6 +3,7 @@ import { Redirect, Tabs } from "expo-router";
 import { useSession } from "@/utilities/ctx";
 import { Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import CustomHeader from "@/components/CustomHeader";
 
 export default function TabLayout() {
   const { session, isLoading } = useSession();
@@ -46,6 +47,7 @@ export default function TabLayout() {
               size={24}
             />
           ),
+          header: () => <CustomHeader title="Work Orders" />,
         }}
       />
       <Tabs.Screen
@@ -59,6 +61,7 @@ export default function TabLayout() {
               size={24}
             />
           ),
+          header: () => <CustomHeader title="Message" />,
         }}
       />
       <Tabs.Screen
@@ -72,6 +75,7 @@ export default function TabLayout() {
               size={24}
             />
           ),
+          header: () => <CustomHeader title="Work Orders" />,
         }}
       />
     </Tabs>
