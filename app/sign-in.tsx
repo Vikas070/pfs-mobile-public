@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import axios from "axios";
 
-import { useSession } from "../../utilities/ctx";
+import { useSession } from "../utilities/ctx";
 
 export default function SignIn() {
   const { signIn } = useSession();
@@ -21,10 +21,6 @@ export default function SignIn() {
 
   const handleLogin = async () => {
     try {
-      if (!email || !password) {
-        alert("Please enter your email and password.");
-        return;
-      }
       const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL;
       const response = await axios.post(`${API_BASE_URL}/login`, {
         email: email,

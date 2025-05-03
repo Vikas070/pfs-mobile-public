@@ -11,7 +11,7 @@ import {
 import RNPickerSelect from "react-native-picker-select";
 import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
-import { useSession } from "../../utilities/ctx";
+import { useSession } from "../utilities/ctx";
 
 const FollowUpNoteModal = ({
   visible,
