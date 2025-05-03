@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import RNPickerSelect from "react-native-picker-select";
-import { WORK_ORDER_STATUS } from "@/utilities/constant";
+import { WORK_ORDER_STATUS } from "../../utilities/constant";
 
 let timeoutId;
 const CustomModalHeader = ({

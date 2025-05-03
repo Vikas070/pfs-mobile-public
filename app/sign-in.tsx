@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import axios from "axios";
 
-import { useSession } from "@/utilities/ctx";
+import { useSession } from "../../utilities/ctx";
 
 export default function SignIn() {
   const { signIn } = useSession();

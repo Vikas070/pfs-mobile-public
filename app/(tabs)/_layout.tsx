@@ -1,9 +1,9 @@
 import React from "react";
 import { Redirect, Tabs } from "expo-router";
-import { useSession } from "@/utilities/ctx";
+import { useSession } from "../../utilities/ctx";
 import { Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import CustomHeader from "@/components/CustomHeader";
+import CustomHeader from "../../components/CustomHeader";
 
 export default function TabLayout() {
   const { session, isLoading } = useSession();

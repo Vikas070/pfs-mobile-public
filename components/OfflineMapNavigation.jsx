@@ -62,7 +62,7 @@ const OfflineMapNavigation = ({
       (location) => {
         const { latitude, longitude } = location.coords;
         setUserLocation({ latitude, longitude });
-        // checkIfOffRoute({ latitude, longitude });
+        checkIfOffRoute({ latitude, longitude });
         // checkIfOffRoute({ latitude: 37.7749, longitude: -122.4194 });
       }
     );
@@ -102,16 +102,20 @@ const OfflineMapNavigation = ({
             <MapView
               style={styles.map}
               initialRegion={{
-                // latitude: userLocation?.latitude,
-                // longitude: userLocation?.longitude,
-                latitude: origin?.latitude,
-                longitude: origin?.longitude,
+                latitude: userLocation?.latitude,
+                longitude: userLocation?.longitude,
+                // latitude: origin?.latitude,
+                // longitude: origin?.longitude,
                 latitudeDelta: 0.01,
                 longitudeDelta: 0.01,
               }}
             >
               {/* <Marker coordinate={userLocation} title="Start" /> */}
-              <Marker coordinate={origin} title="Start" pinColor="green" />
+              <Marker
+                coordinate={userLocation}
+                title="Start"
+                pinColor="green"
+              />
               <Marker coordinate={destination} title="End" pinColor="red" />
               {routeCoords.length > 0 && (
                 <Polyline

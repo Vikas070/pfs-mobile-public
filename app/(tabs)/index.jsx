@@ -12,22 +12,21 @@ import {
 } from "react-native";
 import { AdvancedCheckbox } from "react-native-advanced-checkbox";
 import axios from "axios";
-import { useSession } from "@/utilities/ctx";
-import CustomModal from "@/components/customModal";
+import { useSession } from "../../utilities/ctx";
+import CustomModal from "../../components/customModal";
 import { Provider as PaperProvider } from "react-native-paper";
-import FieldActivityScreen from "@/components/direction";
+import FieldActivityScreen from "../../components/direction";
 import { Formik } from "formik";
-import CustomModalHeader from "@/components/CustomModalHeader";
-import FollowUpNoteModal from "@/components/FollowUpNoteModal";
+import CustomModalHeader from "../../components/CustomModalHeader";
+import FollowUpNoteModal from "../../components/FollowUpNoteModal";
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import polyline from "@mapbox/polyline";
-import { Google_Map_Api_Key } from "@/utilities/constant";
-import OfflineMapNavigation from "@/components/OfflineMapNavigation";
+import OfflineMapNavigation from "../../components/OfflineMapNavigation";
 import * as Location from "expo-location";
 import { getDistance } from "geolib";
 
-const GOOGLE_API_KEY = Google_Map_Api_Key;
+const GOOGLE_API_KEY = process.env.EXPO_PUBLIC_GOOGLE_API_KEY;
 
 const isNear = (coord1, coord2, threshold = 0.0004) => {
   return (
@@ -114,10 +113,10 @@ export default function Index() {
   };
 
   useEffect(() => {
-    // if (technician_id) fetchData();
+    if (technician_id) fetchData();
 
     // Uncomment the following line if you want to see the admin level data for testing and comment the above line
-    fetchData();
+    // fetchData();
   }, [technician_id]);
 
   const [initialValues, setInitialValues] = useState({});
@@ -240,8 +239,8 @@ export default function Index() {
           longitude:
             item.service_point_information?.geographic_location?.longitude,
         };
-        // const origin = userLocation; // Original user location
-        const origin = { latitude: 20.6871582, longitude: -156.4368404 }; // Example: Nearby point
+        const origin = userLocation; // Original user location
+        // const origin = { latitude: 20.6871582, longitude: -156.4368404 }; // Example: Nearby point
 
         if (!origin.latitude || !destination?.latitude) {
           Alert.alert(
@@ -447,8 +446,8 @@ export default function Index() {
               destination: {},
             })
           }
-          // origin={userLocation} // Original user location
-          origin={{ latitude: 20.6871582, longitude: -156.4368404 }} // Example: Nearby point
+          origin={userLocation} // Original user location
+          // origin={{ latitude: 20.6871582, longitude: -156.4368404 }} // Example: Nearby point
           destination={showOfflineMap.destination ?? {}}
           faId={showOfflineMap.faId ?? ""}
           routeCoords={[]}

@@ -4,7 +4,7 @@ import axios from "axios";
 import { Platform } from "react-native";
 
 const AuthContext = createContext({
-  signIn: () => null,
+  signIn: (value) => null,
   signOut: () => null,
   session: null,
   isLoading: false,

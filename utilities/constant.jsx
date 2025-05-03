@@ -1,5 +1,3 @@
-export const Google_Map_Api_Key = "AIzaSyBWP9xHwRFYgwvg2w7-IIdPO176rafHYRw";
-
 export const WORK_ORDER_STATUS = [
   { label: "Enroute", value: "Enroute" },
   { label: "Start Work Order", value: "In Progress" },

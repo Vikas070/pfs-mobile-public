@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { useSession } from "@/utilities/ctx";
+import { useSession } from "../../utilities/ctx";
 import { WebView } from "react-native-webview";
 
 export default function MessageScreen() {
